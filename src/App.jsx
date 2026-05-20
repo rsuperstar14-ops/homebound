@@ -704,14 +704,14 @@ export default function App() {
               !touchingY &&
               (Math.abs(shipTop - (moved.gapY - GAP / 2)) < 18 || Math.abs(shipBottom - (moved.gapY + GAP / 2)) < 18);
 
-            if (nearMiss && frameRef.current % 6 === 0) {
+            if (nearMiss && frameRef.current % 10 === 0) {
               setNearMissFlash(true);
               setNearMissSparks((s) => [
-                ...s.slice(-3),
+                ...s.slice(-2),
                 { id: Date.now() + Math.random(), x: SHIP_X + SHIP_SIZE + 8, y: shipY + SHIP_SIZE / 2, color: currentPhase.accent },
               ]);
-              setTimeout(() => setNearMissFlash(false), 70);
-              setTimeout(() => setNearMissSparks((s) => s.slice(1)), 180);
+              setTimeout(() => setNearMissFlash(false), 60);
+              setTimeout(() => setNearMissSparks((s) => s.slice(1)), 140);
             }
 
             if (!scoredWallIds.current.has(moved.id) && moved.x + WALL_WIDTH < SHIP_X - 10) {
@@ -725,7 +725,7 @@ export default function App() {
           })
           .filter((wall) => wall.x > -WALL_WIDTH)
       );
-    }, PERFORMANCE_MODE ? 22 : 16);
+    }, 16);
 
     return () => clearInterval(loop);
   }, [started, dead, deathFocus, velocity, shipY, score, wallSpeed, best, isTranscendent, currentPhase.name, holdingBoost, invulnerable]);
@@ -946,6 +946,7 @@ export default function App() {
           }}
           onTouchMove={(e) => e.preventDefault()}
           onTouchEnd={endBoost}
+          onTouchCancel={endBoost}
           style={{
             position: "relative",
             overflow: "hidden",
@@ -1151,7 +1152,7 @@ export default function App() {
             </>
           )}
 
-          <div style={{ position: "absolute", left: SHIP_X, top: shipY, width: SHIP_SIZE, height: SHIP_SIZE, transform: `scale(${(1 + Math.min(score / 160, 0.25)) * pulseScale}) rotate(${velocity * 1.6}deg)`, transition: "transform 75ms" }}>
+          <div style={{ position: "absolute", left: SHIP_X, top: shipY, width: SHIP_SIZE, height: SHIP_SIZE, transform: `scale(${(1 + Math.min(score / 160, 0.25)) * pulseScale}) rotate(${velocity * 1.6}deg)`, transition: "none" }}>
             <Ship />
           </div>
 
