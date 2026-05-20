@@ -725,7 +725,7 @@ export default function App() {
           })
           .filter((wall) => wall.x > -WALL_WIDTH)
       );
-    }, 16);
+    }, 22);
 
     return () => clearInterval(loop);
   }, [started, dead, deathFocus, velocity, shipY, score, wallSpeed, best, isTranscendent, currentPhase.name, holdingBoost, invulnerable]);
