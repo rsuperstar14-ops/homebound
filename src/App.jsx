@@ -46,243 +46,47 @@ const SOUND_VOLUME = {
 };
 
 const phases = [
-  {
-    name: "DRIFT",
-    colors: ["#020617", "#1e1b4b", "#000000"],
-    accent: "#22d3ee",
-    ship: "#67e8f9",
-    speed: 3.2,
-  },
-  {
-    name: "WARP",
-    colors: ["#06243a", "#0f4c81", "#000000"],
-    accent: "#38bdf8",
-    ship: "#7dd3fc",
-    speed: 3.8,
-  },
-  {
-    name: "VELOCITY",
-    colors: ["#2e1065", "#701a75", "#000000"],
-    accent: "#d946ef",
-    ship: "#e879f9",
-    speed: 4.5,
-  },
-  {
-    name: "SOLAR",
-    colors: ["#431407", "#92400e", "#000000"],
-    accent: "#f97316",
-    ship: "#fb923c",
-    speed: 5.9,
-  },
-  {
-    name: "INSTABILITY",
-    colors: ["#450a0a", "#431407", "#000000"],
-    accent: "#ef4444",
-    ship: "#f87171",
-    speed: 6.6,
-  },
-  {
-    name: "FRACTURE",
-    colors: ["#000000", "#450a0a", "#000000"],
-    accent: "#fca5a5",
-    ship: "#ffffff",
-    speed: 7.1,
-  },
-  {
-    name: "TRANSCENDENCE",
-    colors: ["#dbeafe", "#f8fafc", "#c7d2fe"],
-    accent: "#bfdbfe",
-    ship: "#ffffff",
-    speed: 7.8,
-  },
+  { name: "DRIFT", colors: ["#020617", "#1e1b4b", "#000000"], accent: "#22d3ee", ship: "#67e8f9", speed: 3.2 },
+  { name: "WARP", colors: ["#06243a", "#0f4c81", "#000000"], accent: "#38bdf8", ship: "#7dd3fc", speed: 3.8 },
+  { name: "VELOCITY", colors: ["#2e1065", "#701a75", "#000000"], accent: "#d946ef", ship: "#e879f9", speed: 4.5 },
+  { name: "SOLAR", colors: ["#431407", "#92400e", "#000000"], accent: "#f97316", ship: "#fb923c", speed: 5.9 },
+  { name: "INSTABILITY", colors: ["#450a0a", "#431407", "#000000"], accent: "#ef4444", ship: "#f87171", speed: 6.6 },
+  { name: "FRACTURE", colors: ["#000000", "#450a0a", "#000000"], accent: "#fca5a5", ship: "#ffffff", speed: 7.1 },
+  { name: "TRANSCENDENCE", colors: ["#dbeafe", "#f8fafc", "#c7d2fe"], accent: "#bfdbfe", ship: "#ffffff", speed: 7.8 },
 ];
 
 const phaseStartScores = [0, 20, 40, 60, 85, 115, 150];
 
 const cosmeticCatalog = {
   ships: [
-    {
-      id: "DEFAULT",
-      name: "DEFAULT",
-      rarity: "FREE",
-      cost: 0,
-      requirement: 0,
-      ownedByDefault: true,
-    },
-    {
-      id: "VOID",
-      name: "VOID",
-      rarity: "RARE",
-      cost: 400,
-      requirement: 40,
-      ownedByDefault: false,
-    },
-    {
-      id: "SOLAR",
-      name: "SOLAR",
-      rarity: "RARE",
-      cost: 650,
-      requirement: 60,
-      ownedByDefault: false,
-    },
-    {
-      id: "NEBULA",
-      name: "NEBULA",
-      rarity: "EPIC",
-      cost: 1200,
-      requirement: 85,
-      ownedByDefault: false,
-    },
-    {
-      id: "GOLD",
-      name: "GOLD",
-      rarity: "LEGENDARY",
-      cost: 2500,
-      requirement: 115,
-      ownedByDefault: false,
-    },
-    {
-      id: "GLITCH",
-      name: "GLITCH",
-      rarity: "TRANSCENDENT",
-      cost: 5000,
-      requirement: 150,
-      ownedByDefault: false,
-    },
-    {
-      id: "ABYSSAL",
-      name: "ABYSSAL",
-      rarity: "MYTHIC",
-      cost: 25000,
-      requirement: 250,
-      ownedByDefault: false,
-    },
+    { id: "DEFAULT", name: "DEFAULT", rarity: "FREE", cost: 0, requirement: 0, ownedByDefault: true },
+    { id: "VOID", name: "VOID", rarity: "RARE", cost: 400, requirement: 40, ownedByDefault: false },
+    { id: "SOLAR", name: "SOLAR", rarity: "RARE", cost: 650, requirement: 60, ownedByDefault: false },
+    { id: "NEBULA", name: "NEBULA", rarity: "EPIC", cost: 1200, requirement: 85, ownedByDefault: false },
+    { id: "GOLD", name: "GOLD", rarity: "LEGENDARY", cost: 2500, requirement: 115, ownedByDefault: false },
+    { id: "GLITCH", name: "GLITCH", rarity: "TRANSCENDENT", cost: 5000, requirement: 150, ownedByDefault: false },
+    { id: "ABYSSAL", name: "ABYSSAL", rarity: "MYTHIC", cost: 25000, requirement: 250, ownedByDefault: false },
   ],
   boosts: [
-    {
-      id: "FIRE",
-      name: "FIRE",
-      rarity: "FREE",
-      cost: 0,
-      requirement: 0,
-      ownedByDefault: true,
-    },
-    {
-      id: "VOID",
-      name: "VOID",
-      rarity: "RARE",
-      cost: 350,
-      requirement: 40,
-      ownedByDefault: false,
-    },
-    {
-      id: "SOLAR",
-      name: "SOLAR",
-      rarity: "RARE",
-      cost: 550,
-      requirement: 60,
-      ownedByDefault: false,
-    },
-    {
-      id: "ICE",
-      name: "ICE",
-      rarity: "EPIC",
-      cost: 1100,
-      requirement: 85,
-      ownedByDefault: false,
-    },
-    {
-      id: "PLASMA",
-      name: "PLASMA",
-      rarity: "LEGENDARY",
-      cost: 2200,
-      requirement: 115,
-      ownedByDefault: false,
-    },
-    {
-      id: "RAINBOW",
-      name: "RAINBOW",
-      rarity: "TRANSCENDENT",
-      cost: 4500,
-      requirement: 150,
-      ownedByDefault: false,
-    },
-    {
-      id: "ABYSSAL",
-      name: "ABYSSAL",
-      rarity: "MYTHIC",
-      cost: 22000,
-      requirement: 250,
-      ownedByDefault: false,
-    },
+    { id: "FIRE", name: "FIRE", rarity: "FREE", cost: 0, requirement: 0, ownedByDefault: true },
+    { id: "VOID", name: "VOID", rarity: "RARE", cost: 350, requirement: 40, ownedByDefault: false },
+    { id: "SOLAR", name: "SOLAR", rarity: "RARE", cost: 550, requirement: 60, ownedByDefault: false },
+    { id: "ICE", name: "ICE", rarity: "EPIC", cost: 1100, requirement: 85, ownedByDefault: false },
+    { id: "PLASMA", name: "PLASMA", rarity: "LEGENDARY", cost: 2200, requirement: 115, ownedByDefault: false },
+    { id: "RAINBOW", name: "RAINBOW", rarity: "TRANSCENDENT", cost: 4500, requirement: 150, ownedByDefault: false },
+    { id: "ABYSSAL", name: "ABYSSAL", rarity: "MYTHIC", cost: 22000, requirement: 250, ownedByDefault: false },
   ],
   deathFx: [
-    {
-      id: "STATIC",
-      name: "STATIC",
-      rarity: "FREE",
-      cost: 0,
-      requirement: 0,
-      ownedByDefault: true,
-    },
-    {
-      id: "EMBER",
-      name: "EMBER",
-      rarity: "EPIC",
-      cost: 900,
-      requirement: 60,
-      ownedByDefault: false,
-    },
-    {
-      id: "VOID RIPPLE",
-      name: "VOID RIPPLE",
-      rarity: "TRANSCENDENT",
-      cost: 4000,
-      requirement: 150,
-      ownedByDefault: false,
-    },
-    {
-      id: "ABYSSAL COLLAPSE",
-      name: "ABYSSAL COLLAPSE",
-      rarity: "MYTHIC",
-      cost: 18000,
-      requirement: 250,
-      ownedByDefault: false,
-    },
+    { id: "STATIC", name: "STATIC", rarity: "FREE", cost: 0, requirement: 0, ownedByDefault: true },
+    { id: "EMBER", name: "EMBER", rarity: "EPIC", cost: 900, requirement: 60, ownedByDefault: false },
+    { id: "VOID RIPPLE", name: "VOID RIPPLE", rarity: "TRANSCENDENT", cost: 4000, requirement: 150, ownedByDefault: false },
+    { id: "ABYSSAL COLLAPSE", name: "ABYSSAL COLLAPSE", rarity: "MYTHIC", cost: 18000, requirement: 250, ownedByDefault: false },
   ],
   auras: [
-    {
-      id: "NONE",
-      name: "NONE",
-      rarity: "FREE",
-      cost: 0,
-      requirement: 0,
-      ownedByDefault: true,
-    },
-    {
-      id: "HALO",
-      name: "HALO",
-      rarity: "LEGENDARY",
-      cost: 2300,
-      requirement: 115,
-      ownedByDefault: false,
-    },
-    {
-      id: "SIGNAL",
-      name: "SIGNAL",
-      rarity: "TRANSCENDENT",
-      cost: 3800,
-      requirement: 150,
-      ownedByDefault: false,
-    },
-    {
-      id: "ABYSS",
-      name: "ABYSS",
-      rarity: "MYTHIC",
-      cost: 20000,
-      requirement: 250,
-      ownedByDefault: false,
-    },
+    { id: "NONE", name: "NONE", rarity: "FREE", cost: 0, requirement: 0, ownedByDefault: true },
+    { id: "HALO", name: "HALO", rarity: "LEGENDARY", cost: 2300, requirement: 115, ownedByDefault: false },
+    { id: "SIGNAL", name: "SIGNAL", rarity: "TRANSCENDENT", cost: 3800, requirement: 150, ownedByDefault: false },
+    { id: "ABYSS", name: "ABYSS", rarity: "MYTHIC", cost: 20000, requirement: 250, ownedByDefault: false },
   ],
 };
 
@@ -326,18 +130,10 @@ function cleanChoice(value, fallback) {
 
 function getDefaultUnlocked() {
   return {
-    ships: cosmeticCatalog.ships
-      .filter((i) => i.ownedByDefault)
-      .map((i) => i.id),
-    boosts: cosmeticCatalog.boosts
-      .filter((i) => i.ownedByDefault)
-      .map((i) => i.id),
-    deathFx: cosmeticCatalog.deathFx
-      .filter((i) => i.ownedByDefault)
-      .map((i) => i.id),
-    auras: cosmeticCatalog.auras
-      .filter((i) => i.ownedByDefault)
-      .map((i) => i.id),
+    ships: cosmeticCatalog.ships.filter((i) => i.ownedByDefault).map((i) => i.id),
+    boosts: cosmeticCatalog.boosts.filter((i) => i.ownedByDefault).map((i) => i.id),
+    deathFx: cosmeticCatalog.deathFx.filter((i) => i.ownedByDefault).map((i) => i.id),
+    auras: cosmeticCatalog.auras.filter((i) => i.ownedByDefault).map((i) => i.id),
   };
 }
 
@@ -360,8 +156,7 @@ function getBoostColors(style) {
   if (style === "SOLAR") return ["#ef4444", "#f97316", "transparent"];
   if (style === "ICE") return ["#0ea5e9", "#bae6fd", "transparent"];
   if (style === "PLASMA") return ["#ec4899", "#22d3ee", "transparent"];
-  if (style === "RAINBOW")
-    return ["#ef4444", "#facc15", "#22c55e", "#38bdf8", "#a78bfa"];
+  if (style === "RAINBOW") return ["#ef4444", "#facc15", "#22c55e", "#38bdf8", "#a78bfa"];
   if (style === "ABYSSAL") return ["#000000", "#581c87", "transparent"];
   return ["#ff5c18", "#ffb84c", "transparent"];
 }
@@ -376,31 +171,17 @@ function getBoostGradient(style) {
 
 function getShipGradient(style) {
   const c = getShipColors(style);
-  return (
-    "radial-gradient(circle at 28% 24%, " +
-    c[0] +
-    " 0%, " +
-    c[1] +
-    " 42%, " +
-    c[2] +
-    " 100%)"
-  );
+  return "radial-gradient(circle at 28% 24%, " + c[0] + " 0%, " + c[1] + " 42%, " + c[2] + " 100%)";
 }
 
 function getBoostCoreGradient(style) {
   const c = getBoostColors(style);
   const middle = c[1] || "#fff";
-  return (
-    "linear-gradient(to left, rgba(255,255,255,0.95), " +
-    middle +
-    ", transparent)"
-  );
+  return "linear-gradient(to left, rgba(255,255,255,0.95), " + middle + ", transparent)";
 }
 
 export default function App() {
-  const [soundEnabled, setSoundEnabled] = useState(
-    () => safeRead("homebound_soundEnabled", "true") !== "false"
-  );
+  const [soundEnabled, setSoundEnabled] = useState(() => safeRead("homebound_soundEnabled", "true") !== "false");
   const audioRef = useRef({});
   const audioUnlockedRef = useRef(false);
 
@@ -410,18 +191,10 @@ export default function App() {
   const [started, setStarted] = useState(false);
   const [dead, setDead] = useState(false);
   const [score, setScore] = useState(0);
-  const [best, setBest] = useState(() =>
-    Number(safeRead("homebound_best", "0"))
-  );
-  const [credits, setCredits] = useState(() =>
-    Number(safeRead("homebound_credits", "0"))
-  );
-  const [dailyAdsUsed, setDailyAdsUsed] = useState(() =>
-    Number(safeRead("homebound_dailyAdsUsed", "0"))
-  );
-  const [dailyAdsDate, setDailyAdsDate] = useState(() =>
-    safeRead("homebound_dailyAdsDate", "")
-  );
+  const [best, setBest] = useState(() => Number(safeRead("homebound_best", "0")));
+  const [credits, setCredits] = useState(() => Number(safeRead("homebound_credits", "0")));
+  const [dailyAdsUsed, setDailyAdsUsed] = useState(() => Number(safeRead("homebound_dailyAdsUsed", "0")));
+  const [dailyAdsDate, setDailyAdsDate] = useState(() => safeRead("homebound_dailyAdsDate", ""));
   const [gameKey, setGameKey] = useState(0);
   const [reviveCount, setReviveCount] = useState(0);
   const [continuedRun, setContinuedRun] = useState(false);
@@ -437,18 +210,10 @@ export default function App() {
     }
   });
 
-  const [shipStyle, setShipStyle] = useState(() =>
-    cleanChoice(safeRead("homebound_shipStyle", "DEFAULT"), "DEFAULT")
-  );
-  const [boostStyle, setBoostStyle] = useState(() =>
-    cleanChoice(safeRead("homebound_boostStyle", "FIRE"), "FIRE")
-  );
-  const [deathFx, setDeathFx] = useState(() =>
-    cleanChoice(safeRead("homebound_deathFx", "STATIC"), "STATIC")
-  );
-  const [auraStyle, setAuraStyle] = useState(() =>
-    cleanChoice(safeRead("homebound_auraStyle", "NONE"), "NONE")
-  );
+  const [shipStyle, setShipStyle] = useState(() => cleanChoice(safeRead("homebound_shipStyle", "DEFAULT"), "DEFAULT"));
+  const [boostStyle, setBoostStyle] = useState(() => cleanChoice(safeRead("homebound_boostStyle", "FIRE"), "FIRE"));
+  const [deathFx, setDeathFx] = useState(() => cleanChoice(safeRead("homebound_deathFx", "STATIC"), "STATIC"));
+  const [auraStyle, setAuraStyle] = useState(() => cleanChoice(safeRead("homebound_auraStyle", "NONE"), "NONE"));
   const [previewShipStyle, setPreviewShipStyle] = useState(shipStyle);
   const [previewBoostStyle, setPreviewBoostStyle] = useState(boostStyle);
   const [previewDeathFx, setPreviewDeathFx] = useState(deathFx);
@@ -457,9 +222,7 @@ export default function App() {
   const [stats, setStats] = useState(() => {
     try {
       const saved = safeRead("homebound_stats", "");
-      return saved
-        ? JSON.parse(saved)
-        : { runs: 0, totalScore: 0, revives: 0, bestPhase: "DRIFT" };
+      return saved ? JSON.parse(saved) : { runs: 0, totalScore: 0, revives: 0, bestPhase: "DRIFT" };
     } catch {
       return { runs: 0, totalScore: 0, revives: 0, bestPhase: "DRIFT" };
     }
@@ -576,11 +339,7 @@ export default function App() {
     setStats((s) => ({
       ...s,
       totalScore: s.totalScore + adjusted,
-      bestPhase:
-        phaseStartScores[getPhaseIndex(adjusted)] >=
-        phaseStartScores[getPhaseIndex(best)]
-          ? phaseName
-          : s.bestPhase,
+      bestPhase: phaseStartScores[getPhaseIndex(adjusted)] >= phaseStartScores[getPhaseIndex(best)] ? phaseName : s.bestPhase,
     }));
   }
 
@@ -630,24 +389,12 @@ export default function App() {
     return () => clearTimeout(t);
   }, [loading]);
 
-  useEffect(
-    () => safeWrite("homebound_soundEnabled", String(soundEnabled)),
-    [soundEnabled]
-  );
+  useEffect(() => safeWrite("homebound_soundEnabled", String(soundEnabled)), [soundEnabled]);
   useEffect(() => safeWrite("homebound_best", String(best)), [best]);
   useEffect(() => safeWrite("homebound_credits", String(credits)), [credits]);
-  useEffect(
-    () => safeWrite("homebound_dailyAdsUsed", String(dailyAdsUsed)),
-    [dailyAdsUsed]
-  );
-  useEffect(
-    () => safeWrite("homebound_dailyAdsDate", dailyAdsDate),
-    [dailyAdsDate]
-  );
-  useEffect(
-    () => safeWrite("homebound_unlocked", JSON.stringify(unlocked)),
-    [unlocked]
-  );
+  useEffect(() => safeWrite("homebound_dailyAdsUsed", String(dailyAdsUsed)), [dailyAdsUsed]);
+  useEffect(() => safeWrite("homebound_dailyAdsDate", dailyAdsDate), [dailyAdsDate]);
+  useEffect(() => safeWrite("homebound_unlocked", JSON.stringify(unlocked)), [unlocked]);
   useEffect(() => safeWrite("homebound_shipStyle", shipStyle), [shipStyle]);
   useEffect(() => safeWrite("homebound_boostStyle", boostStyle), [boostStyle]);
   useEffect(() => safeWrite("homebound_deathFx", deathFx), [deathFx]);
@@ -665,6 +412,15 @@ export default function App() {
   useEffect(() => {
     if ((!started && !dead) || loading) startMenuMusic();
   }, [started, dead, loading, soundEnabled]);
+
+  useEffect(() => {
+    function handleNav(e) {
+      setScreen(e.detail);
+    }
+
+    window.addEventListener("homebound-nav", handleNav);
+    return () => window.removeEventListener("homebound-nav", handleNav);
+  }, []);
 
   return (
     <div style={appShellStyle}>
@@ -717,7 +473,50 @@ export default function App() {
           />
         )}
 
-        {booted && !loading && !started && screen === "SKINS" && (
+        {booted && !loading && !started && screen === "ABOUT" && (
+          <InfoScreen
+            title="ABOUT HOMEBOUND"
+            subtitle="HIGH SPEED COSMIC SURVIVAL"
+            body="Homebound: Space Runner is a fast-paced endless survival game built for mobile and desktop browsers. Navigate increasingly unstable sectors of space, survive phase shifts, unlock cosmetic upgrades, and chase higher scores through escalating difficulty tiers."
+            bullets={[
+              "Canvas-rendered gameplay optimized for mobile browsers",
+              "Purely cosmetic progression system",
+              "Rewarded ads only — no pay-to-win mechanics",
+              "Designed as an indie browser arcade experience"
+            ]}
+            onBack={() => setScreen("MENU")}
+          />
+        )}
+
+        {booted && !loading && !started && screen === "HOWTO" && (
+          <InfoScreen
+            title="HOW TO PLAY"
+            subtitle="SURVIVE THE VOID"
+            body="Hold the screen or mouse button to stabilize your ship and avoid colliding with obstacles. Each phase increases speed and introduces more dangerous obstacle patterns."
+            bullets={[
+              "Tap and hold to boost upward",
+              "Release to descend",
+              "Pass obstacles to earn score and credits",
+              "Unlock cosmetics and higher rarity items"
+            ]}
+            onBack={() => setScreen("MENU")}
+          />
+        )}
+        {booted && !loading && !started && screen === "POLICY" && (
+          <InfoScreen
+            title="PRIVACY & ADS"
+            subtitle="PLAYER FIRST"
+            body="Homebound: Space Runner stores local save data directly in your browser, including sound settings, high scores, credits, unlocks, and selected cosmetics. Optional rewarded ads may be used to support development and provide bonus credits or revives."
+            bullets={[
+              "No account is required to play",
+              "Progression is stored locally in your browser",
+              "Ads are optional and reward-based",
+              "Cosmetics do not provide gameplay advantages"
+            ]}
+            onBack={() => setScreen("MENU")}
+          />
+        )}
+{booted && !loading && !started && screen === "SKINS" && (
           <SkinsScreen
             credits={credits}
             best={best}
@@ -747,11 +546,7 @@ export default function App() {
         )}
 
         {booted && !loading && !started && screen === "STATS" && (
-          <StatsScreen
-            best={best}
-            stats={stats}
-            onBack={() => setScreen("MENU")}
-          />
+          <StatsScreen best={best} stats={stats} onBack={() => setScreen("MENU")} />
         )}
 
         {dead && (
@@ -770,22 +565,7 @@ export default function App() {
   );
 }
 
-function CanvasGame({
-  active,
-  initialScore,
-  shipStyle,
-  boostStyle,
-  auraStyle,
-  best,
-  soundEnabled,
-  toggleSound,
-  onScore,
-  onPhase,
-  onScoreSound,
-  onDeath,
-  onBoostStart,
-  onBoostEnd,
-}) {
+function CanvasGame({ active, initialScore, shipStyle, boostStyle, auraStyle, best, soundEnabled, toggleSound, onScore, onPhase, onScoreSound, onDeath, onBoostStart, onBoostEnd }) {
   const canvasRef = useRef(null);
   const rafRef = useRef(null);
   const stateRef = useRef(null);
@@ -810,12 +590,7 @@ function CanvasGame({
       velocity: -3.5,
       score: initialScore,
       walls: [],
-      stars: Array.from({ length: 18 }, (_, i) => ({
-        x: (i * 73) % GAME_W,
-        y: (i * 37) % GAME_H,
-        r: i % 3 === 0 ? 1.4 : 0.9,
-        d: 0.25 + (i % 4) * 0.2,
-      })),
+      stars: Array.from({ length: 18 }, (_, i) => ({ x: (i * 73) % GAME_W, y: (i * 37) % GAME_H, r: i % 3 === 0 ? 1.4 : 0.9, d: 0.25 + (i % 4) * 0.2 })),
       spawn: 0,
       lastGapY: GAME_H / 2,
       frame: 0,
@@ -843,9 +618,7 @@ function CanvasGame({
       const phaseIndex = getPhaseIndex(s.score);
       const phase = phases[phaseIndex];
       const isTrans = phase.name === "TRANSCENDENCE";
-      const speed = isTrans
-        ? phase.speed + Math.max(0, s.score - 150) * 0.035
-        : phase.speed;
+      const speed = isTrans ? phase.speed + Math.max(0, s.score - 150) * 0.035 : phase.speed;
 
       if (phaseIndex !== s.lastPhase) {
         s.lastPhase = phaseIndex;
@@ -867,24 +640,11 @@ function CanvasGame({
       if (s.spawn > WALL_SPAWN_FRAMES) {
         s.spawn = 0;
         const direction = s.lastGapY < GAME_H / 2 ? 1 : -1;
-        let gapY =
-          s.lastGapY +
-          direction * (65 + Math.random() * 85) +
-          (Math.random() - 0.5) * 70;
+        let gapY = s.lastGapY + direction * (65 + Math.random() * 85) + (Math.random() - 0.5) * 70;
         gapY = Math.max(125, Math.min(375, gapY));
-        if (Math.abs(gapY - s.lastGapY) < 55)
-          gapY =
-            s.lastGapY < GAME_H / 2
-              ? 375 - Math.random() * 80
-              : 125 + Math.random() * 80;
+        if (Math.abs(gapY - s.lastGapY) < 55) gapY = s.lastGapY < GAME_H / 2 ? 375 - Math.random() * 80 : 125 + Math.random() * 80;
         s.lastGapY = gapY;
-        s.walls.push({
-          id: Date.now() + Math.random(),
-          x: GAME_W,
-          gapY,
-          scored: false,
-          phaseIndex: getPhaseIndex(s.score),
-        });
+        s.walls.push({ id: Date.now() + Math.random(), x: GAME_W, gapY, scored: false, phaseIndex: getPhaseIndex(s.score) });
       }
 
       const shipLeft = SHIP_X + (SHIP_SIZE - SHIP_HITBOX) / 2;
@@ -893,15 +653,9 @@ function CanvasGame({
       const shipBottom = shipTop + SHIP_HITBOX;
 
       for (const wall of s.walls) {
-        wall.x -=
-          (speed +
-            (phase.name === "INSTABILITY"
-              ? Math.sin((wall.x + s.score) * 0.03) * 1.4
-              : 0)) *
-          dt;
+        wall.x -= (speed + (phase.name === "INSTABILITY" ? Math.sin((wall.x + s.score) * 0.03) * 1.4 : 0)) * dt;
         const touchingX = shipRight > wall.x && shipLeft < wall.x + WALL_WIDTH;
-        const touchingY =
-          shipTop < wall.gapY - GAP / 2 || shipBottom > wall.gapY + GAP / 2;
+        const touchingY = shipTop < wall.gapY - GAP / 2 || shipBottom > wall.gapY + GAP / 2;
         if (touchingX && touchingY && s.invulnerableFrames <= 0) {
           kill(s);
           return;
@@ -971,14 +725,7 @@ function CanvasGame({
         ctx.beginPath();
         ctx.arc(GAME_W / 2, GAME_H / 2, 220, 0, Math.PI * 2);
         ctx.stroke();
-        const g = ctx.createRadialGradient(
-          GAME_W / 2,
-          GAME_H / 2,
-          10,
-          GAME_W / 2,
-          GAME_H / 2,
-          250
-        );
+        const g = ctx.createRadialGradient(GAME_W / 2, GAME_H / 2, 10, GAME_W / 2, GAME_H / 2, 250);
         g.addColorStop(0, "rgba(255,255,255,0.42)");
         g.addColorStop(0.35, "rgba(255,255,255,0.16)");
         g.addColorStop(1, "rgba(255,255,255,0)");
@@ -991,19 +738,9 @@ function CanvasGame({
         ctx.fillStyle = g;
         ctx.fillRect(0, 0, GAME_W, GAME_H);
       }
-      const vignette = ctx.createRadialGradient(
-        GAME_W / 2,
-        GAME_H / 2,
-        150,
-        GAME_W / 2,
-        GAME_H / 2,
-        360
-      );
+      const vignette = ctx.createRadialGradient(GAME_W / 2, GAME_H / 2, 150, GAME_W / 2, GAME_H / 2, 360);
       vignette.addColorStop(0, "rgba(0,0,0,0)");
-      vignette.addColorStop(
-        1,
-        isTrans ? "rgba(0,0,0,0.05)" : "rgba(0,0,0,0.42)"
-      );
+      vignette.addColorStop(1, isTrans ? "rgba(0,0,0,0.05)" : "rgba(0,0,0,0.42)");
       ctx.fillStyle = vignette;
       ctx.fillRect(0, 0, GAME_W, GAME_H);
       ctx.restore();
@@ -1028,9 +765,7 @@ function CanvasGame({
       const topH = wall.gapY - GAP / 2;
       const bottomY = wall.gapY + GAP / 2;
       const bottomH = GAME_H - bottomY;
-      const wallPhase =
-        phases[wall.phaseIndex ?? getPhaseIndex(scoreDisplayRef.current)] ||
-        phase;
+      const wallPhase = phases[wall.phaseIndex ?? getPhaseIndex(scoreDisplayRef.current)] || phase;
       const type = wallPhase.name;
       const isTrans = type === "TRANSCENDENCE";
 
@@ -1113,11 +848,7 @@ function CanvasGame({
           ctx.globalAlpha = 0.65;
           ctx.strokeStyle = "rgba(255,255,255,0.28)";
           ctx.lineWidth = 1;
-          for (
-            let yy = y + 24;
-            yy < y + h;
-            yy += type === "VELOCITY" ? 38 : 46
-          ) {
+          for (let yy = y + 24; yy < y + h; yy += type === "VELOCITY" ? 38 : 46) {
             ctx.beginPath();
             ctx.moveTo(x + 8, yy);
             ctx.lineTo(x + w - 8, yy - 14);
@@ -1181,29 +912,19 @@ function CanvasGame({
       ctx.rotate(angle);
       if (auraStyle !== "NONE") {
         ctx.globalAlpha = auraStyle === "ABYSS" ? 0.5 : 0.45;
-        ctx.strokeStyle =
-          auraStyle === "ABYSS"
-            ? "rgba(88,28,135,0.65)"
-            : auraStyle === "SIGNAL"
-            ? "rgba(56,189,248,0.8)"
-            : "rgba(255,255,255,0.75)";
+        ctx.strokeStyle = auraStyle === "ABYSS" ? "rgba(88,28,135,0.65)" : auraStyle === "SIGNAL" ? "rgba(56,189,248,0.8)" : "rgba(255,255,255,0.75)";
         ctx.lineWidth = auraStyle === "ABYSS" ? 3 : 2;
         ctx.beginPath();
         ctx.ellipse(0, 0, 33, 22, performance.now() * 0.001, 0, Math.PI * 2);
         ctx.stroke();
       }
-      ctx.globalAlpha = invulnerable
-        ? 0.65 + Math.abs(Math.sin(performance.now() * 0.02)) * 0.35
-        : 1;
+      ctx.globalAlpha = invulnerable ? 0.65 + Math.abs(Math.sin(performance.now() * 0.02)) * 0.35 : 1;
       const bodyGrad = ctx.createRadialGradient(-7, -7, 4, 0, 0, 35);
       bodyGrad.addColorStop(0, c1);
       bodyGrad.addColorStop(0.45, c2);
       bodyGrad.addColorStop(1, c3);
       ctx.fillStyle = bodyGrad;
-      ctx.strokeStyle =
-        shipStyle === "ABYSSAL"
-          ? "rgba(168,85,247,0.38)"
-          : "rgba(255,255,255,0.65)";
+      ctx.strokeStyle = shipStyle === "ABYSSAL" ? "rgba(168,85,247,0.38)" : "rgba(255,255,255,0.65)";
       ctx.lineWidth = 2;
       roundedRect(ctx, -14, -10, 30, 20, 14);
       ctx.fill();
@@ -1240,10 +961,7 @@ function CanvasGame({
       const approach = getApproachMessage(score);
       if (approach) {
         ctx.font = "800 10px system-ui";
-        ctx.fillStyle =
-          phase.name === "TRANSCENDENCE"
-            ? "rgba(15,23,42,0.65)"
-            : "rgba(255,255,255,0.62)";
+        ctx.fillStyle = phase.name === "TRANSCENDENCE" ? "rgba(15,23,42,0.65)" : "rgba(255,255,255,0.62)";
         ctx.fillText(approach, GAME_W - 20, 86);
       }
 
@@ -1279,12 +997,8 @@ function CanvasGame({
 
   function handleSoundClick(e) {
     const rect = e.currentTarget.getBoundingClientRect();
-    const x =
-      ((e.clientX || e.touches?.[0]?.clientX || 0) - rect.left) *
-      (GAME_W / rect.width);
-    const y =
-      ((e.clientY || e.touches?.[0]?.clientY || 0) - rect.top) *
-      (GAME_H / rect.height);
+    const x = ((e.clientX || e.touches?.[0]?.clientX || 0) - rect.left) * (GAME_W / rect.width);
+    const y = ((e.clientY || e.touches?.[0]?.clientY || 0) - rect.top) * (GAME_H / rect.height);
     if (y < 54 && x > GAME_W / 2 - 65 && x < GAME_W / 2 + 65) {
       toggleSound();
       return true;
@@ -1296,25 +1010,13 @@ function CanvasGame({
     <canvas
       ref={canvasRef}
       onContextMenu={(e) => e.preventDefault()}
-      onMouseDown={(e) => {
-        if (!handleSoundClick(e)) beginBoost(e);
-      }}
+      onMouseDown={(e) => { if (!handleSoundClick(e)) beginBoost(e); }}
       onMouseUp={endBoost}
       onMouseLeave={endBoost}
-      onTouchStart={(e) => {
-        if (!handleSoundClick(e)) beginBoost(e);
-      }}
+      onTouchStart={(e) => { if (!handleSoundClick(e)) beginBoost(e); }}
       onTouchEnd={endBoost}
       onTouchCancel={endBoost}
-      style={{
-        position: "absolute",
-        inset: 0,
-        width: "100%",
-        height: "100%",
-        display: "block",
-        touchAction: "none",
-        background: "#000",
-      }}
+      style={{ position: "absolute", inset: 0, width: "100%", height: "100%", display: "block", touchAction: "none", background: "#000" }}
     />
   );
 }
@@ -1328,17 +1030,7 @@ function Button({ children, onClick, color = "rgba(34,211,238,0.5)" }) {
         e.stopPropagation();
         onClick?.();
       }}
-      style={{
-        padding: "12px 18px",
-        borderRadius: 999,
-        border: `1px solid ${color}`,
-        background: "rgba(255,255,255,0.04)",
-        color: "white",
-        fontSize: 12,
-        fontWeight: 800,
-        letterSpacing: 2,
-        cursor: "pointer",
-      }}
+      style={{ padding: "12px 18px", borderRadius: 999, border: `1px solid ${color}`, background: "rgba(255,255,255,0.04)", color: "white", fontSize: 12, fontWeight: 800, letterSpacing: 2, cursor: "pointer" }}
     >
       {children}
     </button>
@@ -1347,32 +1039,10 @@ function Button({ children, onClick, color = "rgba(34,211,238,0.5)" }) {
 
 function TapToBeginScreen({ onBegin }) {
   return (
-    <div
-      onClick={onBegin}
-      onTouchStart={onBegin}
-      style={{ ...overlayStyle(false, "rgba(0,0,0,0.96)"), cursor: "pointer" }}
-    >
+    <div onClick={onBegin} onTouchStart={onBegin} style={{ ...overlayStyle(false, "rgba(0,0,0,0.96)"), cursor: "pointer" }}>
       <LogoShip large />
-      <div
-        style={{
-          fontSize: 34,
-          fontWeight: 900,
-          letterSpacing: 2.5,
-          marginBottom: 14,
-        }}
-      >
-        HOMEBOUND: SPACE RUNNER
-      </div>
-      <div
-        style={{
-          color: "rgba(255,255,255,0.52)",
-          fontSize: 12,
-          letterSpacing: 5,
-          animation: "tapPulse 1.4s ease-in-out infinite",
-        }}
-      >
-        TAP TO BEGIN
-      </div>
+      <div style={{ fontSize: 34, fontWeight: 900, letterSpacing: 2.5, marginBottom: 14 }}>HOMEBOUND: SPACE RUNNER</div>
+      <div style={{ color: "rgba(255,255,255,0.52)", fontSize: 12, letterSpacing: 5, animation: "tapPulse 1.4s ease-in-out infinite" }}>TAP TO BEGIN</div>
       <style>{`@keyframes tapPulse{0%{opacity:.25}50%{opacity:1}100%{opacity:.25}}`}</style>
     </div>
   );
@@ -1382,45 +1052,10 @@ function LoadingScreen() {
   return (
     <div style={overlayStyle(false, "rgba(0,0,0,0.9)")}>
       <LogoShip />
-      <div
-        style={{
-          fontSize: 30,
-          fontWeight: 900,
-          letterSpacing: 2.5,
-          marginBottom: 12,
-        }}
-      >
-        HOMEBOUND: SPACE RUNNER
-      </div>
-      <div
-        style={{
-          color: "rgba(255,255,255,0.5)",
-          fontSize: 11,
-          letterSpacing: 3,
-          marginBottom: 26,
-        }}
-      >
-        CALIBRATING RETURN VECTOR
-      </div>
-      <div
-        style={{
-          width: 170,
-          height: 4,
-          borderRadius: 999,
-          background: "rgba(255,255,255,0.12)",
-          overflow: "hidden",
-        }}
-      >
-        <div
-          style={{
-            width: "100%",
-            height: "100%",
-            borderRadius: 999,
-            background:
-              "linear-gradient(to right, transparent, rgba(103,232,249,0.9), transparent)",
-            animation: "loadingSweep 1.1s ease-in-out infinite",
-          }}
-        />
+      <div style={{ fontSize: 30, fontWeight: 900, letterSpacing: 2.5, marginBottom: 12 }}>HOMEBOUND: SPACE RUNNER</div>
+      <div style={{ color: "rgba(255,255,255,0.5)", fontSize: 11, letterSpacing: 3, marginBottom: 26 }}>CALIBRATING RETURN VECTOR</div>
+      <div style={{ width: 170, height: 4, borderRadius: 999, background: "rgba(255,255,255,0.12)", overflow: "hidden" }}>
+        <div style={{ width: "100%", height: "100%", borderRadius: 999, background: "linear-gradient(to right, transparent, rgba(103,232,249,0.9), transparent)", animation: "loadingSweep 1.1s ease-in-out infinite" }} />
       </div>
       <style>{`@keyframes loadingSweep{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}`}</style>
     </div>
@@ -1430,237 +1065,58 @@ function LoadingScreen() {
 function LogoShip({ large = false }) {
   const scale = large ? 1.25 : 1;
   return (
-    <div
-      style={{
-        position: "relative",
-        width: 130 * scale,
-        height: 78 * scale,
-        marginBottom: 28,
-      }}
-    >
-      <div
-        style={{
-          position: "absolute",
-          left: 4 * scale,
-          top: 34 * scale,
-          width: 74 * scale,
-          height: 16 * scale,
-          borderRadius: 999,
-          background:
-            "linear-gradient(to left, rgba(34,211,238,0.95), rgba(255,255,255,0.45), transparent)",
-          filter: "blur(7px)",
-          opacity: 0.95,
-        }}
-      />
-      <div
-        style={{
-          position: "absolute",
-          left: 52 * scale,
-          top: 20 * scale,
-          width: 66 * scale,
-          height: 34 * scale,
-          borderRadius: "52% 48% 50% 50% / 62% 58% 48% 52%",
-          background: getShipGradient("DEFAULT"),
-          border: "2px solid rgba(255,255,255,0.58)",
-          boxShadow: "0 0 28px rgba(103,232,249,0.45)",
-        }}
-      />
-      <div
-        style={{
-          position: "absolute",
-          left: 72 * scale,
-          top: 31 * scale,
-          width: 38 * scale,
-          height: 13 * scale,
-          borderRadius: 999,
-          background:
-            "linear-gradient(180deg, rgba(60,190,255,0.95), rgba(5,22,55,0.98) 55%, rgba(0,8,25,0.98))",
-          border: "1px solid rgba(210,240,255,0.85)",
-        }}
-      />
-      <div
-        style={{
-          position: "absolute",
-          left: 43 * scale,
-          top: 33 * scale,
-          width: 18 * scale,
-          height: 13 * scale,
-          borderRadius: 999,
-          background:
-            "linear-gradient(90deg, rgba(45,45,55,1), rgba(170,170,180,1), rgba(45,45,55,1))",
-          border: "2px solid rgba(255,255,255,0.28)",
-        }}
-      />
+    <div style={{ position: "relative", width: 130 * scale, height: 78 * scale, marginBottom: 28 }}>
+      <div style={{ position: "absolute", left: 4 * scale, top: 34 * scale, width: 74 * scale, height: 16 * scale, borderRadius: 999, background: "linear-gradient(to left, rgba(34,211,238,0.95), rgba(255,255,255,0.45), transparent)", filter: "blur(7px)", opacity: 0.95 }} />
+      <div style={{ position: "absolute", left: 52 * scale, top: 20 * scale, width: 66 * scale, height: 34 * scale, borderRadius: "52% 48% 50% 50% / 62% 58% 48% 52%", background: getShipGradient("DEFAULT"), border: "2px solid rgba(255,255,255,0.58)", boxShadow: "0 0 28px rgba(103,232,249,0.45)" }} />
+      <div style={{ position: "absolute", left: 72 * scale, top: 31 * scale, width: 38 * scale, height: 13 * scale, borderRadius: 999, background: "linear-gradient(180deg, rgba(60,190,255,0.95), rgba(5,22,55,0.98) 55%, rgba(0,8,25,0.98))", border: "1px solid rgba(210,240,255,0.85)" }} />
+      <div style={{ position: "absolute", left: 43 * scale, top: 33 * scale, width: 18 * scale, height: 13 * scale, borderRadius: 999, background: "linear-gradient(90deg, rgba(45,45,55,1), rgba(170,170,180,1), rgba(45,45,55,1))", border: "2px solid rgba(255,255,255,0.28)" }} />
     </div>
   );
 }
 
-function MenuScreen({
-  credits,
-  dailyAdsUsed,
-  onAdCoins,
-  onLaunch,
-  onSkins,
-  onStats,
-}) {
+function MenuScreen({ credits, dailyAdsUsed, onAdCoins, onLaunch, onSkins, onStats }) {
   return (
     <div style={overlayStyle(false)}>
       <div style={creditStyle}>✦ {credits}</div>
       <div style={{ marginTop: 72, marginBottom: -30 }}>
-        <h1
-          style={{
-            fontSize: 26,
-            fontWeight: 900,
-            margin: 0,
-            letterSpacing: 1.5,
-          }}
-        >
-          HOMEBOUND: SPACE RUNNER
-        </h1>
-        <p
-          style={{
-            color: "rgba(255,255,255,0.4)",
-            fontSize: 12,
-            letterSpacing: 3,
-            marginBottom: 16,
-          }}
-        >
-          FAINT SIGNAL DETECTED
-        </p>
+        <h1 style={{ fontSize: 26, fontWeight: 900, margin: 0, letterSpacing: 1.5 }}>HOMEBOUND: SPACE RUNNER</h1>
+        <p style={{ color: "rgba(255,255,255,0.4)", fontSize: 12, letterSpacing: 3, marginBottom: 16 }}>FAINT SIGNAL DETECTED</p>
       </div>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          gap: 12,
-          width: "100%",
-          maxWidth: 280,
-          marginTop: 92,
-        }}
-      >
+      <div style={{ display: "flex", flexDirection: "column", gap: 12, width: "100%", maxWidth: 280, marginTop: 92 }}>
         <Button onClick={onLaunch}>LAUNCH</Button>
-        <Button onClick={onSkins} color="rgba(192,132,252,0.5)">
-          HANGAR
-        </Button>
-        <Button onClick={onAdCoins} color="rgba(250,204,21,0.45)">
-          {dailyAdsUsed >= 3
-            ? "DAILY ADS EXHAUSTED"
-            : `WATCH AD +10 CREDITS (${3 - dailyAdsUsed}/3)`}
-        </Button>
-        <Button onClick={onStats} color="rgba(255,255,255,0.25)">
-          LIFETIME STATS
-        </Button>
+        <Button onClick={onSkins} color="rgba(192,132,252,0.5)">HANGAR</Button>
+        <Button onClick={onAdCoins} color="rgba(250,204,21,0.45)">{dailyAdsUsed >= 3 ? "DAILY ADS EXHAUSTED" : `WATCH AD +10 CREDITS (${3 - dailyAdsUsed}/3)`}</Button>
+        <Button onClick={onStats} color="rgba(255,255,255,0.25)">LIFETIME STATS</Button>
+      </div>
+
+      <div style={{ width: "100%", maxWidth: 340, marginTop: 28, padding: "18px 16px", borderRadius: 20, border: "1px solid rgba(255,255,255,0.08)", background: "rgba(255,255,255,0.03)" }}>
+        <div style={{ fontSize: 11, color: "rgba(255,255,255,0.38)", letterSpacing: 3, marginBottom: 10 }}>ABOUT THE GAME</div>
+        <div style={{ fontSize: 13, lineHeight: 1.7, color: "rgba(255,255,255,0.72)" }}>
+          Homebound: Space Runner is a browser arcade survival game focused on fast reaction gameplay, cosmetic progression, and mobile-friendly performance.
+        </div>
+
+        <div style={{ display: "flex", flexWrap: "wrap", gap: 8, justifyContent: "center", marginTop: 18 }}>
+          <MiniNavButton label="ABOUT" screen="ABOUT" />
+          <MiniNavButton label="HOW TO PLAY" screen="HOWTO" />
+          <MiniNavButton label="PRIVACY" screen="POLICY" />
+        </div>
       </div>
     </div>
   );
 }
 
-function SkinsScreen({
-  credits,
-  best,
-  unlocked,
-  setCredits,
-  setUnlocked,
-  shipStyle,
-  boostStyle,
-  deathFx,
-  auraStyle,
-  previewShipStyle,
-  previewBoostStyle,
-  previewDeathFx,
-  previewAuraStyle,
-  setPreviewShipStyle,
-  setPreviewBoostStyle,
-  setPreviewDeathFx,
-  setPreviewAuraStyle,
-  pendingPurchase,
-  setPendingPurchase,
-  setShipStyle,
-  setBoostStyle,
-  setDeathFx,
-  setAuraStyle,
-  onBack,
-}) {
+function SkinsScreen({ credits, best, unlocked, setCredits, setUnlocked, shipStyle, boostStyle, deathFx, auraStyle, previewShipStyle, previewBoostStyle, previewDeathFx, previewAuraStyle, setPreviewShipStyle, setPreviewBoostStyle, setPreviewDeathFx, setPreviewAuraStyle, pendingPurchase, setPendingPurchase, setShipStyle, setBoostStyle, setDeathFx, setAuraStyle, onBack }) {
   return (
     <div style={overlayStyle(true)}>
       <h2 style={{ fontSize: 32, fontWeight: 900, margin: 0 }}>HANGAR</h2>
-      <p
-        style={{
-          color: "rgba(255,255,255,0.45)",
-          fontSize: 12,
-          letterSpacing: 3,
-          marginBottom: 8,
-        }}
-      >
-        COSMETICS ONLY
-      </p>
+      <p style={{ color: "rgba(255,255,255,0.45)", fontSize: 12, letterSpacing: 3, marginBottom: 8 }}>COSMETICS ONLY</p>
       <div style={creditStyle}>✦ {credits}</div>
-      <HangarPreview
-        shipStyle={previewShipStyle}
-        boostStyle={previewBoostStyle}
-        deathFx={previewDeathFx}
-        auraStyle={previewAuraStyle}
-      />
-      <div
-        style={{
-          width: "100%",
-          maxHeight: 385,
-          overflowY: "auto",
-          paddingRight: 4,
-        }}
-      >
-        <Picker
-          title="SHIP SKINS"
-          category="ships"
-          options={cosmeticCatalog.ships}
-          value={shipStyle}
-          previewValue={previewShipStyle}
-          setPreviewValue={setPreviewShipStyle}
-          credits={credits}
-          best={best}
-          unlocked={unlocked}
-          setPendingPurchase={setPendingPurchase}
-          onChange={setShipStyle}
-        />
-        <Picker
-          title="BOOST TRAILS"
-          category="boosts"
-          options={cosmeticCatalog.boosts}
-          value={boostStyle}
-          previewValue={previewBoostStyle}
-          setPreviewValue={setPreviewBoostStyle}
-          credits={credits}
-          best={best}
-          unlocked={unlocked}
-          setPendingPurchase={setPendingPurchase}
-          onChange={setBoostStyle}
-        />
-        <Picker
-          title="DEATH EFFECTS"
-          category="deathFx"
-          options={cosmeticCatalog.deathFx}
-          value={deathFx}
-          previewValue={previewDeathFx}
-          setPreviewValue={setPreviewDeathFx}
-          credits={credits}
-          best={best}
-          unlocked={unlocked}
-          setPendingPurchase={setPendingPurchase}
-          onChange={setDeathFx}
-        />
-        <Picker
-          title="AURAS"
-          category="auras"
-          options={cosmeticCatalog.auras}
-          value={auraStyle}
-          previewValue={previewAuraStyle}
-          setPreviewValue={setPreviewAuraStyle}
-          credits={credits}
-          best={best}
-          unlocked={unlocked}
-          setPendingPurchase={setPendingPurchase}
-          onChange={setAuraStyle}
-        />
+      <HangarPreview shipStyle={previewShipStyle} boostStyle={previewBoostStyle} deathFx={previewDeathFx} auraStyle={previewAuraStyle} />
+      <div style={{ width: "100%", maxHeight: 385, overflowY: "auto", paddingRight: 4 }}>
+        <Picker title="SHIP SKINS" category="ships" options={cosmeticCatalog.ships} value={shipStyle} previewValue={previewShipStyle} setPreviewValue={setPreviewShipStyle} credits={credits} best={best} unlocked={unlocked} setPendingPurchase={setPendingPurchase} onChange={setShipStyle} />
+        <Picker title="BOOST TRAILS" category="boosts" options={cosmeticCatalog.boosts} value={boostStyle} previewValue={previewBoostStyle} setPreviewValue={setPreviewBoostStyle} credits={credits} best={best} unlocked={unlocked} setPendingPurchase={setPendingPurchase} onChange={setBoostStyle} />
+        <Picker title="DEATH EFFECTS" category="deathFx" options={cosmeticCatalog.deathFx} value={deathFx} previewValue={previewDeathFx} setPreviewValue={setPreviewDeathFx} credits={credits} best={best} unlocked={unlocked} setPendingPurchase={setPendingPurchase} onChange={setDeathFx} />
+        <Picker title="AURAS" category="auras" options={cosmeticCatalog.auras} value={auraStyle} previewValue={previewAuraStyle} setPreviewValue={setPreviewAuraStyle} credits={credits} best={best} unlocked={unlocked} setPendingPurchase={setPendingPurchase} onChange={setAuraStyle} />
       </div>
       {pendingPurchase && (
         <PurchaseConfirmModal
@@ -1670,12 +1126,7 @@ function SkinsScreen({
           onConfirm={() => {
             const { item, category, onChange } = pendingPurchase;
             setCredits((c) => c - item.cost);
-            setUnlocked((u) => ({
-              ...u,
-              [category]: [
-                ...new Set([...(u?.[category] || []), String(item.id)]),
-              ],
-            }));
+            setUnlocked((u) => ({ ...u, [category]: [...new Set([...(u?.[category] || []), String(item.id)])] }));
             onChange(String(item.id));
             setPendingPurchase(null);
           }}
@@ -1688,195 +1139,27 @@ function SkinsScreen({
 
 function HangarPreview({ shipStyle, boostStyle, deathFx, auraStyle }) {
   return (
-    <div
-      style={{
-        position: "relative",
-        width: 240,
-        height: 170,
-        marginBottom: 24,
-        transform: "scale(1.05)",
-      }}
-    >
-      <div
-        style={{
-          position: "absolute",
-          left: 0,
-          top: 54,
-          width: 150,
-          height: 42,
-          borderRadius: 999,
-          background: getBoostGradient(boostStyle),
-          filter: "blur(5px)",
-          opacity: 1,
-          animation: "trailPulse .85s ease-in-out infinite",
-        }}
-      />
-      <div
-        style={{
-          position: "absolute",
-          left: 20,
-          top: 68,
-          width: 104,
-          height: 14,
-          borderRadius: 999,
-          background: getBoostCoreGradient(boostStyle),
-          opacity: 0.95,
-        }}
-      />
-      {boostStyle === "RAINBOW" && (
-        <div
-          style={{
-            position: "absolute",
-            left: 0,
-            top: 54,
-            width: 150,
-            height: 42,
-            borderRadius: 999,
-            background: getBoostGradient("RAINBOW"),
-            filter: "blur(3px)",
-            animation: "trailPulse .75s ease-in-out infinite",
-          }}
-        />
-      )}
-      {boostStyle === "ABYSSAL" && (
-        <div
-          style={{
-            position: "absolute",
-            left: -8,
-            top: 50,
-            width: 160,
-            height: 54,
-            borderRadius: 999,
-            background:
-              "radial-gradient(circle, rgba(0,0,0,1), rgba(88,28,135,.35), transparent 72%)",
-            filter: "blur(6px)",
-            animation: "trailPulse 1.1s ease-in-out infinite",
-          }}
-        />
-      )}
-      {auraStyle !== "NONE" && (
-        <div
-          style={{
-            position: "absolute",
-            left: auraStyle === "ABYSS" ? 84 : 98,
-            top: auraStyle === "ABYSS" ? 20 : 30,
-            width: auraStyle === "ABYSS" ? 142 : 118,
-            height: auraStyle === "ABYSS" ? 94 : 72,
-            borderRadius: 999,
-            border:
-              auraStyle === "ABYSS"
-                ? "2px solid rgba(88,28,135,.3)"
-                : auraStyle === "SIGNAL"
-                ? "2px solid rgba(56,189,248,.65)"
-                : "2px solid rgba(255,255,255,.55)",
-            boxShadow:
-              auraStyle === "ABYSS"
-                ? "0 0 42px rgba(88,28,135,.28)"
-                : auraStyle === "SIGNAL"
-                ? "0 0 30px rgba(56,189,248,.55)"
-                : "0 0 28px rgba(255,255,255,.45)",
-            animation: "haloOrbit 4s linear infinite",
-          }}
-        />
-      )}
-      <div
-        style={{
-          position: "absolute",
-          left: 108,
-          top: 44,
-          width: 110,
-          height: 72,
-        }}
-      >
-        <div
-          style={{
-            position: "absolute",
-            left: 8,
-            top: 12,
-            width: 84,
-            height: 40,
-            borderRadius: "52% 48% 50% 50% / 62% 58% 48% 52%",
-            background: getShipGradient(shipStyle),
-            border: "2px solid rgba(255,255,255,0.58)",
-            boxShadow:
-              shipStyle === "GOLD"
-                ? "0 0 28px rgba(250,204,21,0.9)"
-                : shipStyle === "ABYSSAL"
-                ? "0 0 30px rgba(88,28,135,.45)"
-                : "0 0 22px rgba(255,255,255,0.35)",
-            overflow: "hidden",
-          }}
-        />
-        <div
-          style={{
-            position: "absolute",
-            left: 30,
-            top: 24,
-            width: 46,
-            height: 16,
-            borderRadius: 999,
-            background:
-              "linear-gradient(180deg, rgba(60,190,255,0.95), rgba(5,22,55,0.98) 55%, rgba(0,8,25,0.98))",
-            border: "1px solid rgba(210,240,255,0.85)",
-          }}
-        />
-        <div
-          style={{
-            position: "absolute",
-            left: -8,
-            top: 26,
-            width: 20,
-            height: 14,
-            borderRadius: 999,
-            background:
-              "linear-gradient(90deg, rgba(45,45,55,1), rgba(170,170,180,1), rgba(45,45,55,1))",
-            border: "2px solid rgba(255,255,255,0.28)",
-          }}
-        />
+    <div style={{ position: "relative", width: 240, height: 170, marginBottom: 24, transform: "scale(1.05)" }}>
+      <div style={{ position: "absolute", left: 0, top: 54, width: 150, height: 42, borderRadius: 999, background: getBoostGradient(boostStyle), filter: "blur(5px)", opacity: 1, animation: "trailPulse .85s ease-in-out infinite" }} />
+      <div style={{ position: "absolute", left: 20, top: 68, width: 104, height: 14, borderRadius: 999, background: getBoostCoreGradient(boostStyle), opacity: 0.95 }} />
+      {boostStyle === "RAINBOW" && <div style={{ position: "absolute", left: 0, top: 54, width: 150, height: 42, borderRadius: 999, background: getBoostGradient("RAINBOW"), filter: "blur(3px)", animation: "trailPulse .75s ease-in-out infinite" }} />}
+      {boostStyle === "ABYSSAL" && <div style={{ position: "absolute", left: -8, top: 50, width: 160, height: 54, borderRadius: 999, background: "radial-gradient(circle, rgba(0,0,0,1), rgba(88,28,135,.35), transparent 72%)", filter: "blur(6px)", animation: "trailPulse 1.1s ease-in-out infinite" }} />}
+      {auraStyle !== "NONE" && <div style={{ position: "absolute", left: auraStyle === "ABYSS" ? 84 : 98, top: auraStyle === "ABYSS" ? 20 : 30, width: auraStyle === "ABYSS" ? 142 : 118, height: auraStyle === "ABYSS" ? 94 : 72, borderRadius: 999, border: auraStyle === "ABYSS" ? "2px solid rgba(88,28,135,.3)" : auraStyle === "SIGNAL" ? "2px solid rgba(56,189,248,.65)" : "2px solid rgba(255,255,255,.55)", boxShadow: auraStyle === "ABYSS" ? "0 0 42px rgba(88,28,135,.28)" : auraStyle === "SIGNAL" ? "0 0 30px rgba(56,189,248,.55)" : "0 0 28px rgba(255,255,255,.45)", animation: "haloOrbit 4s linear infinite" }} />}
+      <div style={{ position: "absolute", left: 108, top: 44, width: 110, height: 72 }}>
+        <div style={{ position: "absolute", left: 8, top: 12, width: 84, height: 40, borderRadius: "52% 48% 50% 50% / 62% 58% 48% 52%", background: getShipGradient(shipStyle), border: "2px solid rgba(255,255,255,0.58)", boxShadow: shipStyle === "GOLD" ? "0 0 28px rgba(250,204,21,0.9)" : shipStyle === "ABYSSAL" ? "0 0 30px rgba(88,28,135,.45)" : "0 0 22px rgba(255,255,255,0.35)", overflow: "hidden" }} />
+        <div style={{ position: "absolute", left: 30, top: 24, width: 46, height: 16, borderRadius: 999, background: "linear-gradient(180deg, rgba(60,190,255,0.95), rgba(5,22,55,0.98) 55%, rgba(0,8,25,0.98))", border: "1px solid rgba(210,240,255,0.85)" }} />
+        <div style={{ position: "absolute", left: -8, top: 26, width: 20, height: 14, borderRadius: 999, background: "linear-gradient(90deg, rgba(45,45,55,1), rgba(170,170,180,1), rgba(45,45,55,1))", border: "2px solid rgba(255,255,255,0.28)" }} />
       </div>
-      {deathFx !== "STATIC" && (
-        <div
-          style={{
-            position: "absolute",
-            left: 128,
-            top: 14,
-            width: 44,
-            height: 44,
-            borderRadius: 999,
-            border:
-              deathFx.includes("VOID") || deathFx.includes("ABYSS")
-                ? "2px solid rgba(168,85,247,.35)"
-                : "2px solid rgba(255,180,80,.5)",
-            boxShadow:
-              deathFx.includes("VOID") || deathFx.includes("ABYSS")
-                ? "0 0 24px rgba(168,85,247,.25)"
-                : "0 0 18px rgba(255,140,40,.55)",
-            opacity: 0.8,
-          }}
-        />
-      )}
+      {deathFx !== "STATIC" && <div style={{ position: "absolute", left: 128, top: 14, width: 44, height: 44, borderRadius: 999, border: deathFx.includes("VOID") || deathFx.includes("ABYSS") ? "2px solid rgba(168,85,247,.35)" : "2px solid rgba(255,180,80,.5)", boxShadow: deathFx.includes("VOID") || deathFx.includes("ABYSS") ? "0 0 24px rgba(168,85,247,.25)" : "0 0 18px rgba(255,140,40,.55)", opacity: 0.8 }} />}
       <style>{`@keyframes trailPulse{0%{opacity:.35;transform:scaleX(.92)}50%{opacity:1;transform:scaleX(1.08)}100%{opacity:.35;transform:scaleX(.92)}}@keyframes haloOrbit{0%{transform:rotate(0deg) scale(1)}50%{transform:rotate(180deg) scale(1.08)}100%{transform:rotate(360deg) scale(1)}}`}</style>
     </div>
   );
 }
 
-function Picker({
-  title,
-  category,
-  options,
-  value,
-  previewValue,
-  setPreviewValue,
-  credits,
-  best,
-  unlocked,
-  setPendingPurchase,
-  onChange,
-}) {
+function Picker({ title, category, options, value, previewValue, setPreviewValue, credits, best, unlocked, setPendingPurchase, onChange }) {
   function handleItem(item) {
     setPreviewValue(String(item.id));
-    const owned =
-      unlocked?.[category]?.includes(item.id) || item.ownedByDefault;
+    const owned = unlocked?.[category]?.includes(item.id) || item.ownedByDefault;
     const requirementMet = best >= item.requirement;
     if (owned) return onChange(String(item.id));
     if (!requirementMet || credits < item.cost) return;
@@ -1885,80 +1168,19 @@ function Picker({
 
   return (
     <div style={{ width: "100%", maxWidth: 320, margin: "0 auto 18px" }}>
-      <div
-        style={{
-          color: "rgba(255,255,255,0.45)",
-          fontSize: 11,
-          letterSpacing: 3,
-          marginBottom: 10,
-        }}
-      >
-        {title}
-      </div>
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(3, 1fr)",
-          gap: 8,
-        }}
-      >
+      <div style={{ color: "rgba(255,255,255,0.45)", fontSize: 11, letterSpacing: 3, marginBottom: 10 }}>{title}</div>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 8 }}>
         {options.map((item) => {
-          const owned =
-            unlocked?.[category]?.includes(item.id) || item.ownedByDefault;
+          const owned = unlocked?.[category]?.includes(item.id) || item.ownedByDefault;
           const requirementMet = best >= item.requirement;
           const selected = value === item.id;
           const previewing = previewValue === item.id;
-          const status = owned
-            ? "OWNED"
-            : !requirementMet
-            ? `REACH ${item.requirement}`
-            : `${item.cost} CREDITS`;
-          const statusColor = owned
-            ? "rgba(125,211,252,0.8)"
-            : !requirementMet
-            ? "rgba(248,113,113,0.9)"
-            : "rgba(250,204,21,0.9)";
+          const status = owned ? "OWNED" : !requirementMet ? `REACH ${item.requirement}` : `${item.cost} CREDITS`;
+          const statusColor = owned ? "rgba(125,211,252,0.8)" : !requirementMet ? "rgba(248,113,113,0.9)" : "rgba(250,204,21,0.9)";
           return (
-            <button
-              key={item.id}
-              onMouseDown={(e) => e.stopPropagation()}
-              onTouchStart={(e) => e.stopPropagation()}
-              onClick={(e) => {
-                e.stopPropagation();
-                handleItem(item);
-              }}
-              style={{
-                padding: "10px 6px",
-                borderRadius: 16,
-                border: selected
-                  ? "1px solid rgba(255,255,255,0.75)"
-                  : previewing
-                  ? "1px solid rgba(250,204,21,0.55)"
-                  : "1px solid rgba(255,255,255,0.12)",
-                background: selected
-                  ? "rgba(255,255,255,0.15)"
-                  : previewing
-                  ? "rgba(250,204,21,0.08)"
-                  : "rgba(255,255,255,0.04)",
-                color: "white",
-                fontSize: 9,
-                fontWeight: 900,
-                letterSpacing: 1,
-                cursor: "pointer",
-                opacity: requirementMet ? 1 : 0.65,
-              }}
-            >
+            <button key={item.id} onMouseDown={(e) => e.stopPropagation()} onTouchStart={(e) => e.stopPropagation()} onClick={(e) => { e.stopPropagation(); handleItem(item); }} style={{ padding: "10px 6px", borderRadius: 16, border: selected ? "1px solid rgba(255,255,255,0.75)" : previewing ? "1px solid rgba(250,204,21,0.55)" : "1px solid rgba(255,255,255,0.12)", background: selected ? "rgba(255,255,255,0.15)" : previewing ? "rgba(250,204,21,0.08)" : "rgba(255,255,255,0.04)", color: "white", fontSize: 9, fontWeight: 900, letterSpacing: 1, cursor: "pointer", opacity: requirementMet ? 1 : 0.65 }}>
               <div>{item.name}</div>
-              <div
-                style={{
-                  marginTop: 4,
-                  fontSize: 7,
-                  color: statusColor,
-                  letterSpacing: 0.5,
-                }}
-              >
-                {status}
-              </div>
+              <div style={{ marginTop: 4, fontSize: 7, color: statusColor, letterSpacing: 0.5 }}>{status}</div>
             </button>
           );
         })}
@@ -1970,78 +1192,17 @@ function Picker({
 function PurchaseConfirmModal({ purchase, credits, onCancel, onConfirm }) {
   const { item } = purchase;
   return (
-    <div
-      style={{
-        position: "absolute",
-        inset: 0,
-        background: "rgba(0,0,0,0.72)",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        padding: 28,
-        zIndex: 20,
-      }}
-    >
-      <div
-        style={{
-          width: "100%",
-          maxWidth: 290,
-          borderRadius: 24,
-          border: "1px solid rgba(255,255,255,0.18)",
-          background: "rgba(5,10,25,0.96)",
-          padding: 22,
-          boxShadow: "0 18px 60px rgba(0,0,0,0.65)",
-          textAlign: "center",
-        }}
-      >
-        <HangarPreview
-          shipStyle={item.id}
-          boostStyle={item.id}
-          deathFx={item.id}
-          auraStyle={item.id === "ABYSS" ? "ABYSS" : "NONE"}
-        />
-        <div
-          style={{
-            fontSize: 12,
-            color: "rgba(255,255,255,0.45)",
-            letterSpacing: 3,
-            marginBottom: 8,
-          }}
-        >
-          CONFIRM PURCHASE
-        </div>
-        <div style={{ fontSize: 24, fontWeight: 900, marginBottom: 8 }}>
-          {item.name}
-        </div>
-        <div
-          style={{
-            fontSize: 11,
-            color: "rgba(255,255,255,0.55)",
-            letterSpacing: 2,
-            marginBottom: 16,
-          }}
-        >
-          {item.rarity}
-        </div>
-        <div style={{ color: "#fde68a", fontWeight: 900, marginBottom: 6 }}>
-          COST: {item.cost} CREDITS
-        </div>
-        <div
-          style={{
-            color: "rgba(255,255,255,0.48)",
-            fontSize: 12,
-            marginBottom: 20,
-          }}
-        >
-          BALANCE AFTER: {credits - item.cost}
-        </div>
+    <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.72)", display: "flex", alignItems: "center", justifyContent: "center", padding: 28, zIndex: 20 }}>
+      <div style={{ width: "100%", maxWidth: 290, borderRadius: 24, border: "1px solid rgba(255,255,255,0.18)", background: "rgba(5,10,25,0.96)", padding: 22, boxShadow: "0 18px 60px rgba(0,0,0,0.65)", textAlign: "center" }}>
+        <HangarPreview shipStyle={item.id} boostStyle={item.id} deathFx={item.id} auraStyle={item.id === "ABYSS" ? "ABYSS" : "NONE"} />
+        <div style={{ fontSize: 12, color: "rgba(255,255,255,0.45)", letterSpacing: 3, marginBottom: 8 }}>CONFIRM PURCHASE</div>
+        <div style={{ fontSize: 24, fontWeight: 900, marginBottom: 8 }}>{item.name}</div>
+        <div style={{ fontSize: 11, color: "rgba(255,255,255,0.55)", letterSpacing: 2, marginBottom: 16 }}>{item.rarity}</div>
+        <div style={{ color: "#fde68a", fontWeight: 900, marginBottom: 6 }}>COST: {item.cost} CREDITS</div>
+        <div style={{ color: "rgba(255,255,255,0.48)", fontSize: 12, marginBottom: 20 }}>BALANCE AFTER: {credits - item.cost}</div>
         <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-          <Button onClick={onConfirm} color="rgba(250,204,21,0.55)">
-            BUY & EQUIP
-          </Button>
-          <Button onClick={onCancel} color="rgba(255,255,255,0.22)">
-            CANCEL
-          </Button>
+          <Button onClick={onConfirm} color="rgba(250,204,21,0.55)">BUY & EQUIP</Button>
+          <Button onClick={onCancel} color="rgba(255,255,255,0.22)">CANCEL</Button>
         </div>
       </div>
     </div>
@@ -2051,34 +1212,14 @@ function PurchaseConfirmModal({ purchase, credits, onCancel, onConfirm }) {
 function StatsScreen({ best, stats, onBack }) {
   return (
     <div style={overlayStyle(true)}>
-      <h2 style={{ fontSize: 32, fontWeight: 900, marginBottom: 24 }}>
-        LIFETIME STATS
-      </h2>
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(2, 1fr)",
-          gap: 12,
-          width: "100%",
-          maxWidth: 280,
-          marginBottom: 28,
-        }}
-      >
+      <h2 style={{ fontSize: 32, fontWeight: 900, marginBottom: 24 }}>LIFETIME STATS</h2>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 12, width: "100%", maxWidth: 280, marginBottom: 28 }}>
         <Stat label="RUNS" value={stats.runs} />
         <Stat label="BEST" value={best} />
         <Stat label="TOTAL" value={stats.totalScore} />
         <Stat label="REVIVES" value={stats.revives} />
       </div>
-      <div
-        style={{
-          color: "rgba(216,180,254,0.75)",
-          fontSize: 12,
-          letterSpacing: 3,
-          marginBottom: 28,
-        }}
-      >
-        FARTHEST SIGNAL: {stats.bestPhase}
-      </div>
+      <div style={{ color: "rgba(216,180,254,0.75)", fontSize: 12, letterSpacing: 3, marginBottom: 28 }}>FARTHEST SIGNAL: {stats.bestPhase}</div>
       <Button onClick={onBack}>RETURN</Button>
     </div>
   );
@@ -2086,88 +1227,66 @@ function StatsScreen({ best, stats, onBack }) {
 
 function Stat({ label, value }) {
   return (
-    <div
+    <div style={{ border: "1px solid rgba(255,255,255,0.1)", background: "rgba(255,255,255,0.05)", borderRadius: 18, padding: 16 }}>
+      <div style={{ color: "rgba(255,255,255,0.4)", fontSize: 12 }}>{label}</div>
+      <div style={{ color: "white", fontSize: 28, fontWeight: 900 }}>{value}</div>
+    </div>
+  );
+}
+
+function MiniNavButton({ label, screen }) {
+  return (
+    <button
+      onClick={() => window.dispatchEvent(new CustomEvent("homebound-nav", { detail: screen }))}
       style={{
-        border: "1px solid rgba(255,255,255,0.1)",
+        padding: "8px 12px",
+        borderRadius: 999,
+        border: "1px solid rgba(255,255,255,0.12)",
         background: "rgba(255,255,255,0.05)",
-        borderRadius: 18,
-        padding: 16,
+        color: "rgba(255,255,255,0.72)",
+        fontSize: 10,
+        fontWeight: 800,
+        letterSpacing: 1.5,
+        cursor: "pointer"
       }}
     >
-      <div style={{ color: "rgba(255,255,255,0.4)", fontSize: 12 }}>
-        {label}
-      </div>
-      <div style={{ color: "white", fontSize: 28, fontWeight: 900 }}>
-        {value}
+      {label}
+    </button>
+  );
+}
+
+function InfoScreen({ title, subtitle, body, bullets, onBack }) {
+  return (
+    <div style={overlayStyle(true)}>
+      <div style={{ width: "100%", maxWidth: 340, borderRadius: 24, border: "1px solid rgba(255,255,255,0.08)", background: "rgba(255,255,255,0.04)", padding: 24, textAlign: "left" }}>
+        <div style={{ color: "rgba(255,255,255,0.38)", fontSize: 11, letterSpacing: 3, marginBottom: 10 }}>{subtitle}</div>
+        <div style={{ fontSize: 30, fontWeight: 900, marginBottom: 18 }}>{title}</div>
+        <div style={{ color: "rgba(255,255,255,0.74)", lineHeight: 1.8, fontSize: 14, marginBottom: 18 }}>{body}</div>
+        <div style={{ display: "flex", flexDirection: "column", gap: 10, marginBottom: 24 }}>
+          {bullets.map((b) => (
+            <div key={b} style={{ color: "rgba(255,255,255,0.6)", fontSize: 13 }}>• {b}</div>
+          ))}
+        </div>
+        <Button onClick={onBack}>RETURN</Button>
       </div>
     </div>
   );
 }
 
-function DeathScreen({
-  score,
-  best,
-  reviveCount,
-  revive,
-  retry,
-  toMenu,
-  shipStyle,
-}) {
+function DeathScreen({ score, best, reviveCount, revive, retry, toMenu, shipStyle }) {
   return (
     <div style={overlayStyle(true, "rgba(0,0,0,0.62)")}>
-      <div
-        style={{
-          width: 82,
-          height: 62,
-          marginBottom: 16,
-          transform: "rotate(198deg)",
-          opacity: 0.35,
-          position: "relative",
-        }}
-      >
-        <div
-          style={{
-            position: "absolute",
-            left: 6,
-            top: 12,
-            width: 68,
-            height: 34,
-            borderRadius: "52% 48% 50% 50% / 62% 58% 48% 52%",
-            background: getShipGradient(shipStyle),
-            border: "2px solid rgba(255,255,255,0.35)",
-          }}
-        />
-        <div
-          style={{
-            position: "absolute",
-            left: 28,
-            top: 20,
-            width: 40,
-            height: 16,
-            borderRadius: 999,
-            background:
-              "linear-gradient(180deg, rgba(60,190,255,0.95), rgba(5,22,55,0.98) 55%, rgba(0,8,25,0.98))",
-            border: "1px solid rgba(210,240,255,0.85)",
-          }}
-        />
+      <div style={{ width: 82, height: 62, marginBottom: 16, transform: "rotate(198deg)", opacity: 0.35, position: "relative" }}>
+        <div style={{ position: "absolute", left: 6, top: 12, width: 68, height: 34, borderRadius: "52% 48% 50% 50% / 62% 58% 48% 52%", background: getShipGradient(shipStyle), border: "2px solid rgba(255,255,255,0.35)" }} />
+        <div style={{ position: "absolute", left: 28, top: 20, width: 40, height: 16, borderRadius: 999, background: "linear-gradient(180deg, rgba(60,190,255,0.95), rgba(5,22,55,0.98) 55%, rgba(0,8,25,0.98))", border: "1px solid rgba(210,240,255,0.85)" }} />
       </div>
-      <div style={{ fontSize: 36, fontWeight: 900, marginBottom: 8 }}>
-        {score > 110 ? "SIGNAL LOST" : "LOST IN SPACE"}
-      </div>
-      <div style={{ color: "rgba(255,255,255,0.7)", marginBottom: 18 }}>
-        Score: {score}
-      </div>
+      <div style={{ fontSize: 36, fontWeight: 900, marginBottom: 8 }}>{score > 110 ? "SIGNAL LOST" : "LOST IN SPACE"}</div>
+      <div style={{ color: "rgba(255,255,255,0.7)", marginBottom: 18 }}>Score: {score}</div>
       <Button onClick={retry}>TRY AGAIN</Button>
       <div style={{ height: 10 }} />
-      {reviveCount === 0 && (
-        <Button onClick={revive} color="rgba(192,132,252,0.55)">
-          REVIVE (WATCH AD)
-        </Button>
-      )}
+      {reviveCount === 0 && <Button onClick={revive} color="rgba(192,132,252,0.55)">REVIVE (WATCH AD)</Button>}
       <div style={{ height: 10 }} />
-      <Button onClick={toMenu} color="rgba(255,255,255,0.25)">
-        MAIN MENU
-      </Button>
+      <Button onClick={toMenu} color="rgba(255,255,255,0.25)">MAIN MENU</Button>
     </div>
   );
 }
