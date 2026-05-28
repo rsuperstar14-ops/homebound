@@ -375,7 +375,7 @@ export default function App() {
   useEffect(() => {
     const css = document.createElement("style");
     css.innerHTML = `
-      html, body, #root { margin:0; padding:0; width:100%; height:100%; overflow:hidden; background:#000; overscroll-behavior:none; touch-action:none; -webkit-user-select:none; user-select:none; position:fixed; inset:0; }
+      html, body, #root { margin:0; padding:0; width:100%; height:100%; overflow:hidden; background:#000; overscroll-behavior:none; -webkit-user-select:none; user-select:none; position:fixed; inset:0; }
       * { box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
       button { min-height:44px; touch-action:manipulation; }
     `;
@@ -412,15 +412,6 @@ export default function App() {
   useEffect(() => {
     if ((!started && !dead) || loading) startMenuMusic();
   }, [started, dead, loading, soundEnabled]);
-
-  useEffect(() => {
-    function handleNav(e) {
-      setScreen(e.detail);
-    }
-
-    window.addEventListener("homebound-nav", handleNav);
-    return () => window.removeEventListener("homebound-nav", handleNav);
-  }, []);
 
   return (
     <div style={appShellStyle}>
@@ -470,6 +461,9 @@ export default function App() {
             onLaunch={() => startGame(0)}
             onSkins={() => setScreen("SKINS")}
             onStats={() => setScreen("STATS")}
+            onAbout={() => setScreen("ABOUT")}
+            onHowTo={() => setScreen("HOWTO")}
+            onPolicy={() => setScreen("POLICY")}
           />
         )}
 
@@ -1074,11 +1068,34 @@ function LogoShip({ large = false }) {
   );
 }
 
-function MenuScreen({ credits, dailyAdsUsed, onAdCoins, onLaunch, onSkins, onStats }) {
+function AdBanner() {
+  useEffect(() => {
+    try {
+      if (window.adsbygoogle) {
+        window.adsbygoogle.push({});
+      }
+    } catch {}
+  }, []);
+
+  return (
+    <div style={{ width: "100%", maxWidth: 340, marginTop: 18, minHeight: 90, overflow: "hidden" }}>
+      <ins
+        className="adsbygoogle"
+        style={{ display: "block" }}
+        data-ad-client="ca-pub-2334133402364824"
+        data-ad-slot="9983555975"
+        data-ad-format="auto"
+        data-full-width-responsive="true"
+      />
+    </div>
+  );
+}
+
+function MenuScreen({ credits, dailyAdsUsed, onAdCoins, onLaunch, onSkins, onStats, onAbout, onHowTo, onPolicy }) {
   return (
     <div style={overlayStyle(false)}>
       <div style={creditStyle}>✦ {credits}</div>
-      <div style={{ marginTop: 72, marginBottom: -30 }}>
+      <div style={{ marginTop: 42, marginBottom: -18 }}>
         <h1 style={{ fontSize: 26, fontWeight: 900, margin: 0, letterSpacing: 1.5 }}>HOMEBOUND: SPACE RUNNER</h1>
         <p style={{ color: "rgba(255,255,255,0.4)", fontSize: 12, letterSpacing: 3, marginBottom: 16 }}>FAINT SIGNAL DETECTED</p>
       </div>
@@ -1095,12 +1112,14 @@ function MenuScreen({ credits, dailyAdsUsed, onAdCoins, onLaunch, onSkins, onSta
           Homebound: Space Runner is a browser arcade survival game focused on fast reaction gameplay, cosmetic progression, and mobile-friendly performance.
         </div>
 
-        <div style={{ display: "flex", flexWrap: "wrap", gap: 8, justifyContent: "center", marginTop: 18 }}>
-          <MiniNavButton label="ABOUT" screen="ABOUT" />
-          <MiniNavButton label="HOW TO PLAY" screen="HOWTO" />
-          <MiniNavButton label="PRIVACY" screen="POLICY" />
+        <div style={{ display: "grid", gridTemplateColumns: "1fr", gap: 8, marginTop: 18 }}>
+          <MiniNavButton label="ABOUT" onClick={onAbout} />
+          <MiniNavButton label="HOW TO PLAY" onClick={onHowTo} />
+          <MiniNavButton label="PRIVACY & ADS" onClick={onPolicy} />
         </div>
       </div>
+
+      <AdBanner />
     </div>
   );
 }
@@ -1234,10 +1253,10 @@ function Stat({ label, value }) {
   );
 }
 
-function MiniNavButton({ label, screen }) {
+function MiniNavButton({ label, onClick }) {
   return (
     <button
-      onClick={() => window.dispatchEvent(new CustomEvent("homebound-nav", { detail: screen }))}
+      onClick={onClick}
       style={{
         padding: "8px 12px",
         borderRadius: 999,
@@ -1300,12 +1319,15 @@ function overlayStyle(blur = true, bg = "rgba(0,0,0,0.7)") {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "flex-start",
     textAlign: "center",
     color: "white",
-    padding: 32,
+    padding: "32px 32px 48px",
     boxSizing: "border-box",
     zIndex: 5,
+    overflowY: "auto",
+    WebkitOverflowScrolling: "touch",
+    pointerEvents: "auto",
   };
 }
 
